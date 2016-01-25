@@ -12,7 +12,7 @@ export function initialize(/* container, app */) {
     modal: Em.computed.alias('controllers.modal'),
     needs: ['modal'],
 
-    _actions: {
+    actions: {
       closeModal: function(outlet) {
         this.get('modal').hide(outlet);
       }
