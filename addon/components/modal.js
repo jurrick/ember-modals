@@ -1,7 +1,7 @@
 import Em from 'ember';
 import ifElse from 'ember-modals/utils/computed/if-else';
 
-export default Em.View.extend(
+export default Em.Component.extend(
   Em.Evented, {
 
   /* Options */

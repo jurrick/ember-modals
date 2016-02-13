@@ -9,8 +9,7 @@ export default {
 export function initialize(/* container, app */) {
 
   Em.ControllerMixin.reopen({
-    modal: Em.computed.alias('controllers.modal'),
-    needs: ['modal'],
+    modal: Em.inject.controller(),
 
     actions: {
       closeModal: function(outlet) {

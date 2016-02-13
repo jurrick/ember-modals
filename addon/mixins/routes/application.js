@@ -1,5 +1,6 @@
 import defaultFor from 'ember-modals/utils/default-for';
 import Ember from 'ember';
+import getOwner from 'ember-getowner-polyfill';
 
 export default Ember.Mixin.create({
 
@@ -14,14 +15,14 @@ export default Ember.Mixin.create({
       /* Assert the template exists */
 
       Ember.assert('Could not render the modal because no template was found with the name ' + templateName,
-        this.container.has('template:' + templateName));
+        getOwner(this).lookup('template:' + templateName));
 
       /* Default to route's controller. We do this inside the run loop incase the modal is being rendered before currentRouteName is set */
 
 
       options.controller = defaultFor(
         options.controller,
-        this.get('controller.currentRouteName')
+        this.get('controller.application.currentRouteName')
       );
 
       this.render(templateName, options);
